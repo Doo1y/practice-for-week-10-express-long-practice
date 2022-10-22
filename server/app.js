@@ -1,7 +1,16 @@
 const express = require('express');
+require('express-async-errors');
+
 const app = express();
 
-// For testing purposes, GET /
+// serve static files from Express server:
+// starting the url path with '/static' serves the 'assets' folder as the root
+app.use('/static', express.static('assets'));
+
+// parse the incoming body of the request as JSON
+app.use(express.json());
+
+// For testing purposes, GET 2/
 app.get('/', (req, res) => {
   res.json("Express server running. No content provided at root level. Please use another route.");
 });
