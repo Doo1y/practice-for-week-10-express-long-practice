@@ -24,7 +24,8 @@ const foods = [
     dogId: 2
   }
 ];
-
+const food = 1;
+let fooded = 1;
 // ------------------------------  MIDDLEWARES ------------------------------ 
 
 const validateFoodInfo = (req, res, next) => {
@@ -60,3 +61,12 @@ const createFood = (req, res) => {
 // ------------------------------  ROUTER ------------------------------  
 
 // Your code here
+const express = require('express');
+
+const foodsRouter = express.Router({ mergeParams: true });
+
+foodsRouter.get('/foods', getFoodsByDogId);
+
+foodsRouter.post('/foods', validateFoodInfo, createFood);
+
+module.exports =  foodsRouter;
